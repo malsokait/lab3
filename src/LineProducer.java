@@ -1,14 +1,25 @@
-import java.util.concurrent.BlockingQueue;
+
 
 /**
  * Created by Mohammed on 29/10/2015.
  */
 public class LineProducer implements Runnable {
-    public LineProducer(FileIterator input, BlockingQueue<Line> q1){
-
+    FileIterator input;
+    MessageQueue<Line> q1;
+    public LineProducer(FileIterator input, MessageQueue<Line> q1){
+        this.input = input;
+        this.q1 = q1;
     }
 
     public void run(){
+        for(Line line : input){
+            try {
+                q1.put(line);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
 
+        q1.add(new Line("END-OF-FILE", -1));
     }
 }

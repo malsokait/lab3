@@ -15,6 +15,8 @@ public class Program {
         LineProducer p1 = new LineProducer(lines, q1);
         LineConsumer c1 = new LineConsumer(q1, outputFileName);
 
+
+
         List<Thread> threads = new ArrayList<Thread>();
 
         threads.add(new Thread(p1));

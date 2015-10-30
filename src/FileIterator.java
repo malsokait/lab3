@@ -31,9 +31,6 @@ public class FileIterator implements Iterable<Line> {
             }
             i++;
         }
-        for(Line l : list){
-            System.out.println(l.content);
-        }
 
     }
 
