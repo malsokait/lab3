@@ -14,7 +14,9 @@ public class LineProducer implements Runnable {
     public void run(){
         for(Line line : input){
             try {
+                q1.putWithFilter(line, line.content);
                 q1.put(line);
+
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
